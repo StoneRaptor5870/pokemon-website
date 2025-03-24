@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String                 @id @default(uuid())
+  email             String             @unique
+  name              String
+  number            String?              @unique
+  password          String
+  pokemons          Pokemons[]
+  firstPokemon      FirstPokemon?
+}
+
+model Pokemons {
+  id               String                @id @default(uuid())
+  userId           String
+  pokemonId        Int     
+  name             String
+  experience       Int      
+  image            String?
+  type             String?
+  user             User                  @relation(fields: [userId], references: [id])             
+}
+
+model FirstPokemon {
+  id               String         @id @default(uuid())
+  pokemonId        Int
+  pokemonName      String
+  pokemonImage     String?
+  userId           String         @unique
+  user             User           @relation(fields: [userId], references: [id])
+}
