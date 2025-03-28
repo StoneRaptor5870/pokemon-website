@@ -34,11 +34,11 @@ export default async function LandingPage() {
 
   return (
     <div className="flex flex-col items-center justify-between w-full h-screen bg-[url('./../public/Nature.jpg')] bg-cover bg-center bg-no-repeat">
-      {/* <div className="w-full flex justify-center py-4 bg-white">
+      <div className="w-full flex justify-center py-4 bg-white">
         <div className="text-2xl font-bold text-black">
-          Welcome Back, {name}
+          Choose your first pokemon...
         </div>
-      </div> */}
+      </div>
       <div className="flex flex-grow flex-row justify-center items-center gap-12 text-black">
       {pokemonData.map((pokemon) => (
           <PokemonImage key={pokemon.id} id={pokemon.id} name={pokemon.name} imageUrl={pokemon.imageUrl} />
